@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahora Te Lo Cuento... Paseando por Mendoza</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
+
+        .header {
+            background: #ffffff;
+            padding: 2rem 0;
+            border-bottom: 1px solid #f0f0f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #6b7280;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #059669;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            gap: 4rem;
+        }
+
+        .hero-content {
+            max-width: 500px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #059669;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #6b7280;
+            font-weight: 300;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+        }
+
+        .school-info {
+            background: #f9fafb;
+            margin: 0;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .school-info h2 {
+            color: #1a1a1a;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .school-info p {
+            color: #6b7280;
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+
+        .quote {
+            margin: 4rem auto;
+            padding: 3rem;
+            max-width: 800px;
+            text-align: center;
+            background: #ffffff;
+            border: 1px solid #f0f0f0;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .quote blockquote {
+            font-size: 1.25rem;
+            font-weight: 300;
+            color: #374151;
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .quote cite {
+            font-size: 0.9rem;
+            color: #059669;
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        /* Navigation Tabs - More Minimal */
+        .tabs-container {
+            background: #ffffff;
+            border-bottom: 1px solid #f0f0f0;
+            padding: 2rem 0;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            max-width: 800px;
+            margin: 0 auto;
+            gap: 3rem;
+        }
+
+        .tab {
+            background: none;
+            border: none;
+            padding: 1rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            color: #6b7280;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .tab:hover {
+            color: #059669;
+        }
+
+        .tab.active {
+            color: #1a1a1a;
+            font-weight: 700;
+        }
+
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2rem;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #059669;
+            border-radius: 1px;
+        }
+
+        /* Content Sections */
+        .content-section {
+            display: none;
+            padding: 6rem 0;
+            min-height: 60vh;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .editorial-section {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .editorial-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            font-weight: 800;
+            color: #1a1a1a;
+            letter-spacing: -0.5px;
+        }
+
+        .editorial-section p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #374151;
+            font-weight: 300;
+        }
+
+        /* Legend Cards - Modern Layout */
+        .legend {
+            margin-bottom: 6rem;
+            background: #ffffff;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .legend:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .legend-header {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 0;
+            align-items: stretch;
+        }
+
+        .legend-content {
+            padding: 3rem;
+        }
+
+        .legend-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .legend h3 {
+            color: #1a1a1a;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .legend-content p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #374151;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .info-box {
+            background: #f0fdf4;
+            padding: 2rem;
+            border-radius: 16px;
+            margin-top: 2rem;
+            border-left: 4px solid #059669;
+        }
+
+        .info-box h5 {
+            color: #059669;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .info-box p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #374151;
+            font-weight: 400;
+        }
+
+        .riddle {
+            background: #f9fafb;
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 2rem 0;
+            font-style: italic;
+            font-size: 1rem;
+            text-align: center;
+            color: #6b7280;
+            border: 1px solid #f0f0f0;
+            font-weight: 300;
+        }
+
+        /* Values Section */
+        .values-list {
+            list-style: none;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .values-list li {
+            background: #ffffff;
+            margin: 2rem 0;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #374151;
+            font-weight: 300;
+            border-left: 4px solid #059669;
+        }
+
+        .values-list li:hover {
+            transform: translateX(10px);
+        }
+
+        /* Games Section */
+        .games-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .game-card {
+            background: #ffffff;
+            padding: 3rem;
+            border-radius: 24px;
+            text-align: center;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .game-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .game-card h4 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+            font-weight: 700;
+        }
+
+        .game-card p {
+            font-size: 1rem;
+            color: #6b7280;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .btn-secondary {
+            background: #059669;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .btn-secondary:hover {
+            background: #047857;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(5, 150, 105, 0.3);
+        }
+
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            margin-top: 6rem;
+        }
+
+        .footer h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .footer p {
+            font-size: 0.95rem;
+            color: #9ca3af;
+            margin: 0.5rem 0;
+            font-weight: 300;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #059669, #34d399);
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 2rem 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .tabs {
+                flex-wrap: wrap;
+                gap: 1.5rem;
+            }
+            
+            .legend-header {
+                grid-template-columns: 1fr;
+            }
+
+            .legend-image {
+                height: 250px;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .content-section {
+                padding: 3rem 0;
+            }
+
+            .games-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progress-bar"></div>
+    
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">MASOERO</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li onclick="showSection('editorial')"><a href="#editorial" class="active">Editorial</a></li>
+                    <li onclick="showSection('about-legends')"><a href="#about-legends">Leyendas</a></li>
+                    <li onclick="showSection('legends')"><a href="#legends">Historias</a></li>
+                    <li onclick="showSection('values')"><a href="#values">Valores</a></li>
+                    <li onclick="showSection('games')"><a href="#games">Juegos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-subtitle">Paseando por Mendoza</div>
+            <h1>AHORA TE LO CUENTO...</h1>
+            <p>Un viaje contado con el corazón. Descubre las leyendas que nacieron en nuestra tierra y viven en la voz de nuestra gente.</p>
+        </div>
+        <div class="hero-image">
+            <img src="https://planificatuviaje.es/wp-content/uploads/2020/11/Mendoza-1000x685.jpg" alt="Paisaje de Mendoza" />
+        </div>
+    </section>
+
+    <div class="school-info">
+        <h2>ESCUELA 4-184 CARLOS ALBERTO MASOERO</h2>
+        <p>LA PEGA - LAVALLE - MENDOZA</p>
+    </div>
+
+    <div class="container">
+        <div class="quote">
+            <blockquote>
+                "LA AMISTAD NO CRECE POR LA PRESENCIA DE LAS PERSONAS<br>
+                SINO POR LA MAGIA DE SABER QUE,<br>
+                AUNQUE NO LAS VEAS, SIEMPRE LAS LLEVAS EN EL CORAZÓN"
+            </blockquote>
+            <cite>- Melany de La Fuente</cite>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Editorial Section -->
+        <section id="editorial" class="content-section active">
+            <div class="editorial-section">
+                <h2>UN VIAJE CONTADO CON EL CORAZÓN</h2>
+                <p>Esta revista nace orgullosamente del deseo de reencontrarnos con nuestras raíces, de detener el tiempo por un momento y escuchar las voces que habitan nuestra tierra.</p>
+                
+                <p><strong>AHORA TE LO CUENTO: PASEANDO POR MENDOZA</strong> no es solo una recopilación de leyendas, sino el resultado de un trabajo hecho con alma y compromiso: una producción echada a rodar por una profesora, seguida por entusiastas preceptores y estudiantes de la escuela Carlos Masoero de La Pega, Lavalle, al norte de nuestra provincia.</p>
+
+                <p>Cada historia aquí contada lleva algo de nosotros. No sólo investigamos y escribimos, también imaginamos, sentimos y compartimos. Descubrimos que las leyendas mendocinas no son sólo relatos antiguos, sino puentes invisibles que nos conectan con quienes fuimos, con los paisajes que pisamos y con los silencios que a veces hablan más fuerte que las palabras.</p>
+
+                <p>Esperamos que al recorrer estas páginas puedan sentir lo mismo que sentimos nosotros al crearlas: orgullo por nuestras raíces, asombro ante lo desconocido y la certeza de que, mientras sigamos contando nuestras historias, Mendoza seguirá viva en cada uno de nosotros.</p>
+
+                <p style="text-align: right; font-weight: 600; margin-top: 3rem; color: #059669;">H. MARTÍN DOMÍNGUEZ<br>DIRECTOR</p>
+
+                <div class="info-box">
+                    <h5>Equipo de Trabajo:</h5>
+                    <p><strong>Edición:</strong> Prof. Martín Domínguez<br>
+                    <strong>Fotografía:</strong> Prof. Claudia Galdeano<br>
+                    <strong>Dibujos:</strong> Diego Zarandón y Marisol Cacciamani<br>
+                    <strong>Estudiantes artistas:</strong> Melany de La Fuente 2°2°; Facundo Traslaviña 2°1° y Jazmín Farias 2°2°<br>
+                    <strong>Producción Didáctica:</strong> Prof. Claudia Galdeano</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Legends Section -->
+        <section id="about-legends" class="content-section">
+            <div class="editorial-section">
+                <h2>DICEN QUE DICEN...</h2>
+                <p>Las leyendas son narraciones que se transmitieron oralmente, de generación en generación y que se relacionan con la identidad de los pueblos que las crean. Explican el nacimiento de un lugar, de una costumbre popular, el origen de los elementos naturales o las causas de fenómenos climáticos. Generalmente esa explicación se basa en sucesos sobrenaturales.</p>
+
+                <p>Las leyendas pueden ubicarse en un tiempo y en un espacio determinados, porque se inspiran en personajes y hechos históricos. Las personas que crean, recrean y transmiten oralmente las leyendas aceptan la veracidad de esas explicaciones y las cuentan a otros de su comunidad para que no se olviden, y así poder preservar las tradiciones culturales.</p>
+
+                <p>Nuestra tierra, Mendoza, no solo se conoce por sus paisajes imponentes, su vino y sus montañas, sino también por las historias que han nacido en su suelo y viven en la voz de su gente. Las leyendas mendocinas son relatos que mezclan realidad con fantasía, tradición con misterio. Transmitidas de generación en generación, estas historias nos hablan de amores trágicos, seres mágicos, paisajes encantados y fenómenos naturales cargados de significado.</p>
+
+                <div class="quote">
+                    <blockquote>"En esta publicación te invitamos a descubrir algunas de las leyendas más conocidas de nuestra provincia: relatos que nos conectan con el pasado y nos permiten mirar nuestra cultura con otros ojos."</blockquote>
+                </div>
+            </div>
+        </section>
+
+        <!-- Legends Section -->
+        <section id="legends" class="content-section">
+            <div class="legend">
+                <div class="legend-header">
+                    <div class="legend-content">
+                        <h3>EL VIENTO ZONDA</h3>
+                        <p>Cuentan los viejos sabios que había un originario Huarpe que era el más fuerte y ágil de su tribu, que trepaba fácilmente los cerros con sus piernas musculosas y cazaba sus presas saltando como el puma y disparando sus flechas con asombrosa puntería sin errar jamás.</p>
+                        
+                        <p>Los dioses le habían proporcionado un gran físico, y todo esto hacía que Gilanco, tal era su nombre, fuera muy admirado y seguido por todos. Solo para distraerse, Gilanco trepaba las montañas de la cordillera hasta sus cumbres más altas, y en su camino arrasaba con cuanto animal cruzaba, aun sus crías mataban, cosa que los demás hermanos Huarpes respetaban.</p>
+
+                        <div class="info-box">
+                            <h5>¿Sabías que...?</h5>
+                            <p>El viento Zonda es un viento seco, caliente y fuerte que sopla en la región de Cuyo. Se origina en el océano Pacífico, donde el aire húmedo choca con la cordillera de los Andes.</p>
+                        </div>
+                    </div>
+                    <img src="https://www.infocampo.com.ar/wp-content/uploads/2019/09/zonda-1.jpg" alt="Viento Zonda en las montañas" class="legend-image">
+                </div>
+            </div>
+
+            <div class="legend">
+                <div class="legend-header">
+                    <div class="legend-content">
+                        <h3>LA LAGUNA DE LA NIÑA ENCANTADA</h3>
+                        <div class="riddle">
+                            "No quiero Malargüe que me dejes libre, fuera de tus muros estaría perdido y si debo irme por ley del destino dejaré mi alma, vagando en tus calles"
+                        </div>
+                        
+                        <p>Había una vez, una hermosísima princesa indígena que se llamaba Elcha. Su belleza era realmente llamativa y, por supuesto, era la alegría de la tribu. Por aquel entonces, la tribu de Elcha estaba enfrentada a una tribu vecina donde vivía un joven indio que había crecido en amistad y compañerismo con la princesa.</p>
+
+                        <div class="info-box">
+                            <h5>Ubicación Real</h5>
+                            <p>La niña encantada es una hermosa laguna de 80 metros de diámetro y de aguas cristalinas de tono esmeralda, que provienen de ríos subterráneos.</p>
+                        </div>
+                    </div>
+                    <img src="https://mendoza.italiani.it/wp-content/uploads/sites/75/2021/07/Laguna-de-la-Nina-Encantada-Laguna.jpg" alt="Laguna cristalina en las montañas" class="legend-image">
+                </div>
+            </div>
+
+            <div class="legend">
+                <div class="legend-header">
+                    <div class="legend-content">
+                        <h3>EL FUTRE</h3>
+                        <div class="riddle">
+                            "Camina en la noche sin hacer ruido,<br>
+                            lleva sombrero y un traje fino.<br>
+                            No busca oro, ni quiere fama,<br>
+                            pero en las minas, deja su trama."
+                        </div>
+
+                        <p>Esta leyenda nació en Mendoza cuando el ferrocarril estaba desarrollando sus ramales hacia la cordillera, a principios del Siglo XX. El Futre es un ser fantasmagórico, que se aparece a caballo, sosteniendo su cabeza entre las manos, dispuesto a atropellar o a matar del horror a aquél que se interpone en su camino.</p>
+                    </div>
+                    <img src="https://tse4.mm.bing.net/th/id/OIP.TEUFP_a07VNw8TnbenT_vAHaHQ?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Figura misteriosa en la noche" class="legend-image">
+                </div>
+            </div>
+            <div class="legend">
+                <div class="legend-header">
+                    <div class="legend-content">
+                        <h3>EL CACIQUE GUAYMALLÉN</h3>
+                        <p>Hace mucho tiempo, cuando los pueblos originarios habitaban los valles de lo que hoy es Mendoza, vivía un cacique joven y valiente llamado Guaymallén. Era un líder sabio, respetado por su pueblo, que gobernaba con justicia y amaba profundamente su tierra.</p>
+                        
+                        <p>Guaymallén no solo era un guerrero fuerte, también era un hombre de paz. Sabía que la armonía con la naturaleza era fundamental, y enseñaba a su gente a cuidar los ríos, los árboles y los animales como si fueran parte de la familia.</p>
+
+                        <div class="info-box">
+                            <h5>Legado Histórico</h5>
+                            <p>Guaymallén se convirtió en espíritu protector de la región, que vive en los árboles, en el agua del canal, y en el alma de quienes luchan por cuidar su tierra. Desde entonces, ese lugar lleva su nombre: Guaymallén.</p>
+                        </div>
+                    </div>
+                    <img src="https://tse3.mm.bing.net/th/id/OIP.FW1M_lNikbJfTXJi46ZB4gHaE8?pid=ImgDet&w=189&h=126&c=7&dpr=1,4&o=7&rm=3" alt="Representación del Cacique Guaymallén" class="legend-image">
+                </div>
+            </div>
+
+            <div class="legend">
+                <div class="legend-header">
+                    <div class="legend-content">
+                        <h3>LOS ALTOS LIMPIOS</h3>
+                        <p>Había una vez, hace muchos años, una casita donde vivía una familia, con una niña llamada Yalí. Yalí era muy obediente y cariñosa con su madre. Un día Yalí salió a pastorear las cabras. Caminó tanto, tanto que se perdió.</p>
+                        
+                        <p>Su familia al ver que ella no regresaba se comenzó a preocupar. Al atardecer, la niña muy perdida comenzó a subir a uno de los bordos para ubicar desde lo alto su casa y cuando estaba en la punta se empezó a hundir, había caído en el pozo del diablo.</p>
+
+                        <div class="riddle">
+                            "Papá nunca dejes que nadie pastoree sus cabras aquí porque les pasará lo mismo que a mí."
+                        </div>
+
+                        <div class="info-box">
+                            <h5>Origen de Lavalle</h5>
+                            <p>Desde ese día no quedaron ningún monte en esos bordos, los llamaron Altos Limpios y cuentan que cada vez que se levanta un remolino entre ellos es porque se cayó alguien en el pozo del diablo.</p>
+                        </div>
+                    </div>
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/ea/89/04/los-altos-limpios-lavalle.jpg?w=1200&h=1200&s=1" alt="Paisaje de Los Altos Limpios en Lavalle" class="legend-image">
+                </div>
+            </div>
+
+            <div class="legend">
+                <div class="legend-header">
+                    <div class="legend-content">
+                        <h3>LA LAGUNA DEL DIAMANTE</h3>
+                        <p>Dicen que hace mucho tiempo, en los valles del sur de Mendoza, existía un reino invisible lleno de paz y magia. Ese reino estaba protegido por un joven guerrero llamado Tupungato, fuerte y valiente.</p>
+                        
+                        <p>Un día, Tupungato se enamoró de una bella joven llamada Diamante, una mujer sabia y generosa. El amor entre ellos fue puro y profundo, pero los dioses no estaban de acuerdo. A pesar de las advertencias, decidieron seguir juntos.</p>
+
+                        <p>Una noche, durante una tormenta, un rayo cayó desde el cielo y Diamante desapareció. Los dioses, conmovidos por el dolor de Tupungato, decidieron convertirlo en un cerro enorme, y del llanto de Diamante nació una laguna clara y profunda.</p>
+
+                        <div class="info-box">
+                            <h5>Datos Geográficos</h5>
+                            <p>La Laguna del Diamante se asienta sobre una antigua caldera volcánica del período Cuaternario con una profundidad aproximada de 70 metros, dando nacimiento al Río Diamante.</p>
+                        </div>
+                    </div>
+                    <img src="https://tse3.mm.bing.net/th/id/OIP.UUhbIjOAOgvqWZO9LHeslQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Laguna del Diamante con el Cerro Tupungato al fondo" class="legend-image">
+                </div>
+            </div>
+
+            <div class="legend">
+                <div class="legend-header">
+                    <div class="legend-content">
+                        <h3>EL PUENTE DEL INCA</h3>
+                        <p>Antes de la llegada de los españoles, el heredero del trono del Imperio Inca estaba muy enfermo. Una extraña parálisis lo mantenía postrado. Los grandes sabios le aconsejaron al Inca que buscara la cura al sur, donde están las fuentes que devuelven la vida.</p>
+                        
+                        <p>Luego de meses de travesía llegaron a nuestra zona y se encontraron que una profunda quebrada les impedía la marcha. Del otro lado estaban las aguas que iban a curar al niño sagrado.</p>
+
+                        <p>Los guerreros se abrazaron unos a otros y formaron un puente humano. El Inca caminó por encima de sus espaldas con el niño en brazos. Cuando volvió para agradecerles, vio que todos se habían petrificado. Allí nació el famoso Puente del Inca.</p>
+
+                        <div class="info-box">
+                            <h5>Patrimonio Mundial</h5>
+                            <p>El Puente del Inca es una formación geológica natural que forma parte del Camino del Inca (Qhapac Ñan), declarado Patrimonio Mundial por la UNESCO.</p>
+                        </div>
+                    </div>
+                    <img src="https://mediaim.expedia.com/destination/2/8667f343569d9c56881c6b3519feccaa.jpg" alt="El famoso Puente del Inca en Alta Montaña" class="legend-image">
+                </div>
+            </div>
+
+            <div class="legend">
+                <div class="legend-header">
+                    <div class="legend-content">
+                        <h3>LA LEYENDA DEL RÍO ATUEL</h3>
+                        <p>Vivía la tribu del cacique Talú en el sur de Mendoza. Una gran sequía comenzó a azotar la región y muchos integrantes de la tribu murieron por la falta de agua. Durante una expedición, Talú se encontró con una bella muchacha huérfana llamada Clara.</p>
+                        
+                        <p>Se casaron y nació un bello niño al que llamaron "Atuel". Sin embargo, la sequía continuó y los blancos atacaron para tomar control de sus territorios. Todos los hombres, incluido Talú, fueron asesinados.</p>
+
+                        <p>Clara tomó entre sus brazos al pequeño Atuel y se encaminó hacia las altas montañas. Allí rogó a los dioses que enviasen agua para los sobrevivientes. Decidió ofrendar su vida y la de su hijo. Al momento de morir, cada uno dejó caer una lágrima, y de ellas brotó un caudaloso río.</p>
+
+                        <div class="info-box">
+                            <h5>El Alma del Río</h5>
+                            <p>Los lugareños creen que el alma del río a veces llora y otras brama de acuerdo con el caudal que lleva. Según la época del año puede ser manso como un niño o caudaloso y rabioso.</p>
+                        </div>
+                    </div>
+                    <img src="https://tse3.mm.bing.net/th/id/OIP.cMpZfhsvO6FKYheagk7Y-AHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" alt="El caudaloso Río Atuel en su paso por Mendoza" class="legend-image">
+                </div>
+            </div>
+
+            <div class="legend">
+                <div class="legend-header">
+                    <div class="legend-content">
+                        <h3>LAS TERMAS DE CACHEUTA</h3>
+                        <p>En 1532, un chasqui llegó a las tierras de Cacheuta, poderoso cacique que dominaba las tierras de la actual Mendoza. El emisario traía malas noticias: el gran Atahualpa había sido tomado prisionero.</p>
+                        
+                        <p>Cacheuta organizó una campaña de liberación cargando llamas con objetos de oro y plata. En el camino, atacantes hostiles los emboscaron. Cacheuta murió valientemente, pero los atacantes no pudieron sacar información sobre el tesoro escondido.</p>
+
+                        <p>Cuando intentaron sustraer las riquezas, chorros de agua hirviendo surgieron de entre las piedras quemándolos. El espíritu indomable de Cacheuta hizo brotar el agua que terminó con los traidores.</p>
+
+                        <div class="info-box">
+                            <h5>Aguas Curativas</h5>
+                            <p>Las Termas de Cacheuta presentan agua termal que emerge con temperatura entre 35°C y 50°C, rica en minerales de efectos terapéuticos, símbolo de solidaridad humana.</p>
+                        </div>
+                    </div>
+                    <img src="https://www.clarin.com/img/2022/03/29/qtVRlZy_q_720x0__1.jpg" alt="Las aguas termales curativas de Cacheuta" class="legend-image">
+                </div>
+            </div>
+        </section>
+
+        <!-- Values Section -->
+        <section id="values" class="content-section">
+            <div class="editorial-section">
+                <h2>IDEARIO DE NUESTRA COMUNIDAD EDUCATIVA</h2>
+                <div class="quote">
+                    <blockquote>"Lo importante es invisible a los ojos". Nuestra esencia, como seres humanos, es aquello que nos hace ser lo que somos: es invisible, pero se materializa a través de nuestras palabras y nuestras acciones.</blockquote>
+                </div>
+
+                <ul class="values-list">
+                    <li><strong>1.</strong> En la escuela Carlos Masoero, estudiantes, familias, docentes y no docentes son valorados como personas únicas y distintas. Todos buscamos el bienestar integral y cuidamos de cada uno de ellos, siempre y en todos lados.</li>
+                    
+                    <li><strong>2.</strong> Juntos construimos una comunidad educativa basada en valores éticos, democráticos, con trabajo responsable, solidaridad, sinceridad, paz y empatía.</li>
+                    
+                    <li><strong>3.</strong> El respeto hacia sí, los demás, los símbolos patrios, el tiempo y el lugar, el mobiliario, el edificio y la comunidad toda de la escuela, su imagen e identidad es el eje en todo lo que hacemos y decimos.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Games Section -->
+        <section id="games" class="content-section">
+            <div class="editorial-section">
+                <h2>MASOGAMES</h2>
+                
+                <div class="games-section">
+                    <div class="game-card">
+                        <h4>Sopa de Letras</h4>
+                        <p>Encuentra los 10 personajes de las leyendas mendocinas escondidos en la sopa de letras.</p>
+                        
+                        <!-- Imagen de la sopa de letras -->
+                        <div style="margin: 2rem 0; text-align: center;">
+                            <img src="images/sopadeletras.png" alt="Sopa de Letras de Leyendas Mendocinas" style="max-width: 100%; height: auto; border: 2px solid #059669; border-radius: 12px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);">
+                        </div>
+
+                        <div style="margin-top: 2rem; padding: 1.5rem; background: #e8f5e8; border-radius: 12px;">
+                            <h5 style="color: #059669; margin-bottom: 1rem;">¡Busca estos 10 personajes!</h5>
+                            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; font-size: 0.9rem;">
+                                <span>• GILANCO</span>
+                                <span>• ELCHA</span>
+                                <span>• FUTRE</span>
+                                <span>• DIAMANTE</span>
+                                <span>• TUPUNGATO</span>
+                                <span>• CACHEUTA</span>
+                                <span>• ATUEL</span>
+                                <span>• YALI</span>
+                                <span>• GUAYMALLEN</span>
+                                <span>• CLARA</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="game-card">
+                        <h4>Adivinanzas</h4>
+                        <div class="riddle">
+                            "Subí a la cumbre callada,<br>
+                            sin miedo y con gran valor,<br>
+                            mi alma quedó encantada<br>
+                            en un mundo sin dolor..."
+                        </div>
+                        <button class="btn-secondary" onclick="alert('¡Es la Niña Encantada!')">Ver Respuesta</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <h3>Escuela 4-184 Carlos Alberto Masoero</h3>
+            <p>La Pega - Lavalle - Mendoza</p>
+            <p>Una producción educativa con alma y compromiso</p>
+            <p>Agosto 2025</p>
+        </div>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            document.getElementById(sectionId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        window.addEventListener('scroll', function() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progress-bar').style.width = scrolled + '%';
+        });
+
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelector('.tabs-container').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
