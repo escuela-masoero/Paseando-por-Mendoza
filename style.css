@@ -1098,8 +1098,8 @@ body {
 
 @media (max-width: 480px) {
     .team-slide img {
-        width: 120px;
-        height: 120px;
+        width: 200px;
+        height: 200px;
     }
     
     .team-slide-caption h4 {
