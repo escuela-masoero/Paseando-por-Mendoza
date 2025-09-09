@@ -4,585 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ahora Te Lo Cuento... Paseando por Mendoza</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <link rel="stylesheet" href="style.css">
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: #1a1a1a;
-            background: #ffffff;
-        }
-
-        .header {
-            background: #ffffff;
-            padding: 2rem 0;
-            border-bottom: 1px solid #f0f0f0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-        }
-
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #1a1a1a;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 3rem;
-            list-style: none;
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            color: #6b7280;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
-        }
-
-        .nav-menu a:hover,
-        .nav-menu a.active {
-            color: #059669;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            gap: 4rem;
-        }
-
-        .hero-content {
-            max-width: 500px;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: #1a1a1a;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            letter-spacing: -1px;
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: #059669;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: #6b7280;
-            font-weight: 300;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-
-        .hero-image {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-image img {
-            width: 100%;
-            max-width: 500px;
-            height: auto;
-            border-radius: 20px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
-        }
-
-        .school-info {
-            background: #f9fafb;
-            margin: 0;
-            padding: 3rem 2rem;
-            text-align: center;
-            border-top: 1px solid #f0f0f0;
-        }
-
-        .school-info h2 {
-            color: #1a1a1a;
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        .school-info p {
-            color: #6b7280;
-            font-size: 0.9rem;
-            font-weight: 400;
-        }
-
-        .quote {
-            margin: 4rem auto;
-            padding: 3rem;
-            max-width: 800px;
-            text-align: center;
-            background: #ffffff;
-            border: 1px solid #f0f0f0;
-            border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        .quote blockquote {
-            font-size: 1.25rem;
-            font-weight: 300;
-            color: #374151;
-            font-style: italic;
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-
-        .quote cite {
-            font-size: 0.9rem;
-            color: #059669;
-            font-weight: 600;
-            font-style: normal;
-        }
-
-        /* Navigation Tabs - More Minimal */
-        .tabs-container {
-            background: #ffffff;
-            border-bottom: 1px solid #f0f0f0;
-            padding: 2rem 0;
-        }
-
-        .tabs {
-            display: flex;
-            justify-content: center;
-            max-width: 800px;
-            margin: 0 auto;
-            gap: 3rem;
-        }
-
-        .tab {
-            background: none;
-            border: none;
-            padding: 1rem 0;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-            color: #6b7280;
-            font-weight: 500;
-            position: relative;
-        }
-
-        .tab:hover {
-            color: #059669;
-        }
-
-        .tab.active {
-            color: #1a1a1a;
-            font-weight: 700;
-        }
-
-        .tab.active::after {
-            content: '';
-            position: absolute;
-            bottom: -2rem;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: #059669;
-            border-radius: 1px;
-        }
-
-        /* Content Sections */
-        .content-section {
-            display: none;
-            padding: 6rem 0;
-            min-height: 60vh;
-        }
-
-        .content-section.active {
-            display: block;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .editorial-section {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .editorial-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            text-align: center;
-            font-weight: 800;
-            color: #1a1a1a;
-            letter-spacing: -0.5px;
-        }
-
-        .editorial-section p {
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #374151;
-            font-weight: 300;
-        }
-
-        /* Legend Cards - Modern Layout */
-        .legend {
-            margin-bottom: 6rem;
-            background: #ffffff;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .legend:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
-        }
-
-        .legend-header {
-            display: grid;
-            grid-template-columns: 1fr 400px;
-            gap: 0;
-            align-items: stretch;
-        }
-
-        .legend-content {
-            padding: 3rem;
-        }
-
-        .legend-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
-
-        .legend h3 {
-            color: #1a1a1a;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-        }
-
-        .legend-content p {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: #374151;
-            margin-bottom: 1.5rem;
-            font-weight: 300;
-        }
-
-        .info-box {
-            background: #f0fdf4;
-            padding: 2rem;
-            border-radius: 16px;
-            margin-top: 2rem;
-            border-left: 4px solid #059669;
-        }
-
-        .info-box h5 {
-            color: #059669;
-            margin-bottom: 1rem;
-            font-size: 1rem;
-            font-weight: 700;
-        }
-
-        .info-box p {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: #374151;
-            font-weight: 400;
-        }
-
-        .riddle {
-            background: #f9fafb;
-            padding: 2rem;
-            border-radius: 16px;
-            margin: 2rem 0;
-            font-style: italic;
-            font-size: 1rem;
-            text-align: center;
-            color: #6b7280;
-            border: 1px solid #f0f0f0;
-            font-weight: 300;
-        }
-
-        /* Values Section */
-        .values-list {
-            list-style: none;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .values-list li {
-            background: #ffffff;
-            margin: 2rem 0;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease;
-            font-size: 1rem;
-            line-height: 1.7;
-            color: #374151;
-            font-weight: 300;
-            border-left: 4px solid #059669;
-        }
-
-        .values-list li:hover {
-            transform: translateX(10px);
-        }
-
-        /* Games Section */
-        .games-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .game-card {
-            background: #ffffff;
-            padding: 3rem;
-            border-radius: 24px;
-            text-align: center;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease;
-        }
-
-        .game-card:hover {
-            transform: translateY(-8px);
-        }
-
-        .game-card h4 {
-            font-size: 1.4rem;
-            margin-bottom: 1.5rem;
-            color: #1a1a1a;
-            font-weight: 700;
-        }
-
-        .game-card p {
-            font-size: 1rem;
-            color: #6b7280;
-            margin-bottom: 2rem;
-            line-height: 1.6;
-            font-weight: 300;
-        }
-
-        .btn-secondary {
-            background: #059669;
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        .btn-secondary:hover {
-            background: #047857;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(5, 150, 105, 0.3);
-        }
-
-        .footer {
-            background: #1a1a1a;
-            color: white;
-            text-align: center;
-            padding: 4rem 2rem;
-            margin-top: 6rem;
-        }
-
-        .footer h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .footer p {
-            font-size: 0.95rem;
-            color: #9ca3af;
-            margin: 0.5rem 0;
-            font-weight: 300;
-        }
-
-        .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 3px;
-            background: linear-gradient(90deg, #059669, #34d399);
-            z-index: 1000;
-            transition: width 0.3s ease;
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                grid-template-columns: 1fr;
-                text-align: center;
-                padding: 2rem 1rem;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .nav-menu {
-                display: none;
-            }
-            
-            .tabs {
-                flex-wrap: wrap;
-                gap: 1.5rem;
-            }
-            
-            .legend-header {
-                grid-template-columns: 1fr;
-            }
-
-            .legend-image {
-                height: 250px;
-            }
-
-            .container {
-                padding: 0 1rem;
-            }
-
-            .content-section {
-                padding: 3rem 0;
-            }
-
-            .games-section {
-                grid-template-columns: 1fr;
-            }
-
-            /* Menú hamburguesa */
-            .hamburger {
-                display: none;
-                flex-direction: column;
-                cursor: pointer;
-                padding: 10px;
-            }
-
-            .hamburger span {
-                width: 25px;
-                height: 3px;
-                background: #1a1a1a;
-                margin: 3px 0;
-                transition: 0.3s;
-                border-radius: 2px;
-            }
-
-            .hamburger.active span:nth-child(1) {
-                transform: rotate(-45deg) translate(-5px, 6px);
-            }
-
-            .hamburger.active span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .hamburger.active span:nth-child(3) {
-                transform: rotate(45deg) translate(-5px, -6px);
-            }
-
-            /* Menú móvil */
-            .nav-menu.mobile {
-                position: fixed;
-                top: 100px;
-                left: 0;
-                width: 100%;
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(20px);
-                flex-direction: column;
-                padding: 2rem 0;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-                transform: translateY(-100%);
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s ease;
-                z-index: 999;
-            }
-
-            .nav-menu.mobile.active {
-                transform: translateY(0);
-                opacity: 1;
-                visibility: visible;
-            }
-
-            .nav-menu.mobile li {
-                margin: 1rem 0;
-                text-align: center;
-            }
-
-            .nav-menu.mobile a {
-                font-size: 1.1rem;
-                padding: 1rem 2rem;
-                display: block;
-                color: #1a1a1a;
-            }
-
-            .nav-menu.mobile a:hover {
-                background: #f0fdf4;
-                color: #059669;
-            }
-
-            /* Actualizar media query existente */
-            @media (max-width: 768px) {
-                .hamburger {
-                    display: flex;
-                }
-                
-                .nav-menu {
-                    display: none;
-                }
-                
-                .nav-menu.mobile {
-                    display: flex;
-                }
-            }
-        }
-    </style>
 </head>
 <body>
     <div class="progress-bar" id="progress-bar"></div>
     
     <header class="header">
         <div class="header-content">
-            <div class="logo">MASOERO</div>
+            <div class="logo">ESCUELA 4-184 CARLOS ALBERTO MASOERO</div>
             
             <!-- Hamburguesa (solo visible en móvil) -->
             <div class="hamburger" id="hamburger">
@@ -610,16 +40,12 @@
             <div class="hero-subtitle">Paseando por Mendoza</div>
             <h1>AHORA TE LO CUENTO...</h1>
             <p>Un viaje contado con el corazón. Descubre las leyendas que nacieron en nuestra tierra y viven en la voz de nuestra gente.</p>
+            <div class="hero-subtitle">Prof. Claudia Galdeano</div>
         </div>
         <div class="hero-image">
             <img src="https://scontent.fmdz7-1.fna.fbcdn.net/v/t39.30808-6/486608476_1227418812719246_5572426000754630916_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_ohc=EaVwQsVDCFwQ7kNvwF9a8Ng&_nc_oc=AdmBGKd9FxLA2Ngv0bSmsZQ5obpCsOPforpKqgSj4zWCyE8iZtJW9KY0YdaMIVPNp3cYW6lcZoeaka4wU10xpkf0&_nc_zt=23&_nc_ht=scontent.fmdz7-1.fna&_nc_gid=2CrgGy2BlTwp4MhuIx1jlA&oh=00_AfaN3ZLYSeNw9J3YHuIzGesk-5EJLPwoZj7a6kYz-x3ZSg&oe=68C59E17" alt="Paisaje de Mendoza" />
         </div>
     </section>
-
-    <div class="school-info">
-        <h2>ESCUELA 4-184 CARLOS ALBERTO MASOERO</h2>
-        <p>LA PEGA - LAVALLE - MENDOZA</p>
-    </div>
 
     <div class="container">
         <div class="quote">
@@ -647,9 +73,23 @@
 
                 <p style="text-align: right; font-weight: 600; margin-top: 3rem; color: #059669;">H. MARTÍN DOMÍNGUEZ<br>DIRECTOR</p>
 
-                <div class="hero-image">
-                    <img src="images/facundo.png" />
-                    <img src="images/melany.png" alt="">
+                <div class="photo-carousel-1" id="photoCarousel-1">
+                    <div class="carousel-container-1" id="carouselContainer-1">
+                        <div class="carousel-slide-1">
+                            <img src="images/facundo.png" alt="">
+                        </div>   
+                        <div class="carousel-slide-1">
+                            <img src="images/facundo1.png" alt="">
+                        </div>
+                                
+                        <div class="carousel-slide-1">
+                            <img src="images/jazmin.png" alt="">
+                        </div>
+                                
+                        <div class="carousel-slide-1">
+                            <img src="images/melany.png" alt="">
+                        </div>
+                    </div>
                 </div>
 
                 <div class="info-box">
@@ -661,6 +101,25 @@
                 </div>
             </div>
         </section>
+
+        <div class="photo-carousel" id="photoCarousel">
+            <div class="carousel-container" id="carouselContainer">
+                <div class="carousel-slide">
+                    <img src="images/carrusel1.png" alt="">
+                </div>   
+                <div class="carousel-slide">
+                    <img src="images/carrusel2.png" alt="">
+                </div>
+                        
+                <div class="carousel-slide">
+                    <img src="images/carrusel3.png" alt="">
+                </div>
+                        
+                <div class="carousel-slide">
+                    <img src="images/carrusel4.png" alt="">
+                </div>
+            </div>
+        </div>
 
         <!-- About Legends Section -->
         <section id="about-legends" class="content-section">
@@ -977,6 +436,86 @@
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('mobile', 'active');
             }
+        });
+
+        // Carrusel automático
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const indicators = document.querySelectorAll('.indicator');
+        const totalSlides = slides.length;
+
+        function updateCarousel() {
+            const container = document.getElementById('carouselContainer');
+            container.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Actualizar indicadores
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            updateCarousel();
+        }
+
+        // Cambio automático cada 4 segundos
+        let carouselInterval = setInterval(nextSlide, 1500);
+
+        // Pausar en hover
+        const carousel = document.getElementById('photoCarousel');
+        carousel.addEventListener('mouseenter', () => {
+            clearInterval(carouselInterval);
+        });
+
+        carousel.addEventListener('mouseleave', () => {
+            carouselInterval = setInterval(nextSlide, 1500);
+        });
+
+
+        // Carrusel 1
+        // Carrusel automático
+        let currentSlide1 = 0;
+        const slides1 = document.querySelectorAll('.carousel-slide-1');
+        const indicators1 = document.querySelectorAll('.indicator');
+        const totalSlides1 = slides1.length;
+
+        function updateCarousel1() {
+            const container = document.getElementById('carouselContainer-1');
+            container.style.transform = `translateX(-${currentSlide1 * 100}%)`;
+            
+            // Actualizar indicadores
+            indicators1.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentSlide1);
+            });
+        }
+
+        function nextSlide1() {
+            currentSlide1 = (currentSlide1 + 1) % totalSlides1;
+            updateCarousel1();
+        }
+
+        function goToSlide1(slideIndex) {
+            currentSlide1 = slideIndex;
+            updateCarousel1();
+        }
+
+        // Cambio automático cada 1.5 segundos
+        let carouselInterval1 = setInterval(nextSlide1, 1500);
+
+        // Pausar en hover
+        const carousel1 = document.getElementById('photoCarousel-1');
+        carousel1.addEventListener('mouseenter', () => {
+            clearInterval(carouselInterval1);
+        });
+
+        carousel1.addEventListener('mouseleave', () => {
+            carouselInterval1 = setInterval(nextSlide1, 1500);
         });
     </script>
 </body>
