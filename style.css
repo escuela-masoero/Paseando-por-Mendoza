@@ -360,7 +360,6 @@ body {
     line-height: 1.6;
     color: #374151;
     font-weight: 400;
-    margin-bottom: 0px;
 }
 
 /* Riddle */
@@ -458,103 +457,6 @@ body {
     background: #047857;
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(5, 150, 105, 0.3);
-}
-
-/* Photo Carousel */
-.photo-carousel {
-    max-width: 500px;
-    height: 300px;
-    margin: 4rem auto;
-    position: relative;
-    overflow: hidden;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-}
-
-.carousel-container {
-    display: flex;
-    transition: transform 0.8s ease-in-out;
-    height: 300px;
-    width: 500px;
-}
-
-.carousel-slide {
-    min-width: 100%;
-    position: relative;
-}
-
-.carousel-slide img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    display: block;
-}
-
-.carousel-caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-    color: white;
-    padding: 2rem;
-    text-align: center;
-}
-
-.carousel-caption h4 {
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-}
-
-.carousel-caption p {
-    font-size: 0.9rem;
-    opacity: 0.9;
-    font-weight: 300;
-}
-
-.carousel-indicators {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 1.5rem 0;
-    background: rgba(255, 255, 255, 0.95);
-}
-
-.indicator {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: #d1d5db;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.indicator.active {
-    background: #059669;
-    transform: scale(1.2);
-}
-
-.photo-carousel-1 {
-    max-width: 400px;
-    height: 500px;
-    margin: 4rem auto;
-    position: relative;
-    overflow: hidden;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-}
-
-.carousel-container-1 {
-    display: flex;
-    transition: transform 0.8s ease-in-out;
-    height: 500px;
-    width: 400px;
-}
-
-.carousel-slide-1 {
-    min-width: 100%;
-    position: relative;
 }
 
 /* Footer Compacto */
