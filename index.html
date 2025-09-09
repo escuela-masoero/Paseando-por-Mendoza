@@ -73,22 +73,50 @@
 
                 <p style="text-align: right; font-weight: 600; margin-top: 3rem; color: #059669;">H. MARTÍN DOMÍNGUEZ<br>DIRECTOR</p>
 
-                <div class="photo-carousel-1" id="photoCarousel-1">
-                    <div class="carousel-container-1" id="carouselContainer-1">
-                        <div class="carousel-slide-1">
-                            <img src="images/facundo.png" alt="">
-                        </div>   
-                        <div class="carousel-slide-1">
-                            <img src="images/facundo1.png" alt="">
+                <div class="team-cards">
+                    <div class="team-carousel" id="teamCarousel">
+                    <div class="team-carousel-container" id="teamCarouselContainer">
+                        <div class="team-slide">
+                            <img src="images/facundo.png" alt="Facundo Traslaviña">
+                            <div class="team-slide-caption">
+                                <h4>Facundo Traslaviña</h4>
+                                <p>Estudiante de 2°1°</p>
+                            </div>
                         </div>
-                                
-                        <div class="carousel-slide-1">
-                            <img src="images/jazmin.png" alt="">
+                        
+                        <div class="team-slide">
+                            <img src="images/facundo1.png" alt="Jazmín Farias">
+                            <div class="team-slide-caption">
+                                <h4>Jazmín Farias</h4>
+                                <p>Estudiante de 2°2°</p>
+                            </div>
                         </div>
-                                
-                        <div class="carousel-slide-1">
-                            <img src="images/melany.png" alt="">
+                        
+                        <div class="team-slide">
+                            <img src="images/jazmin.png" alt="Facundo Traslaviña">
+                            <div class="team-slide-caption">
+                                <h4>Facundo Traslaviña</h4>
+                                <p>Estudiante de 2°1°</p>
+                            </div>
                         </div>
+                        
+                        <div class="team-slide">
+                            <img src="images/melany.png" alt="Melany de La Fuente">
+                            <div class="team-slide-caption">
+                                <h4>Melany de La Fuente</h4>
+                                <p>Estudiante de 2°2°</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="carousel-nav prev" onclick="prevTeamSlide()">‹</button>
+                    <button class="carousel-nav next" onclick="nextTeamSlide()">›</button>
+                    
+                    <div class="carousel-indicators">
+                        <button class="carousel-indicator active" onclick="goToTeamSlide(0)"></button>
+                        <button class="carousel-indicator" onclick="goToTeamSlide(1)"></button>
+                        <button class="carousel-indicator" onclick="goToTeamSlide(2)"></button>
+                        <button class="carousel-indicator" onclick="goToTeamSlide(3)"></button>
                     </div>
                 </div>
 
@@ -102,21 +130,22 @@
             </div>
         </section>
 
-        <div class="photo-carousel" id="photoCarousel">
-            <div class="carousel-container" id="carouselContainer">
-                <div class="carousel-slide">
-                    <img src="images/carrusel1.png" alt="">
-                </div>   
-                <div class="carousel-slide">
-                    <img src="images/carrusel2.png" alt="">
+        <div class="gallery-grid">
+            <div class="gallery-card">
+                <img src="images/carrusel1.png" alt="Paisajes de Mendoza">
+                <img src="images/carrusel2.png" alt="Cultura Mendocina">
+                <div class="gallery-card-content">
+                    <h5>Equipo Masoero</h5>
+                    <p>Nuestras queridas profes y precep</p>
                 </div>
-                        
-                <div class="carousel-slide">
-                    <img src="images/carrusel3.png" alt="">
-                </div>
-                        
-                <div class="carousel-slide">
-                    <img src="images/carrusel4.png" alt="">
+            </div>
+            
+            <div class="gallery-card">
+                <img src="images/carrusel3.png" alt="Tradiciones Locales">
+                <img src="images/carrusel4.png" alt="Patrimonio Cultural">
+                <div class="gallery-card-content">
+                    <h5>Alumnado Masoero</h5>
+                    <p>Nuestros queridos alumnos</p>
                 </div>
             </div>
         </div>
@@ -377,10 +406,39 @@
 
     <footer class="footer">
         <div class="container">
-            <h3>Escuela 4-184 Carlos Alberto Masoero</h3>
-            <p>La Pega - Lavalle - Mendoza</p>
-            <p>Una producción educativa con alma y compromiso</p>
-            <p>Agosto 2025</p>
+            <!-- Grid de dos columnas para info principal -->
+            <div class="footer-main">
+                <!-- Columna izquierda: Información de la escuela -->
+                <div class="footer-school">
+                    <h3>Escuela 4-184 Carlos Alberto Masoero</h3>
+                    <p>La Pega - Lavalle - Mendoza</p>
+                </div>
+                
+                <!-- Columna derecha: Redes sociales -->
+                <div class="footer-social">
+                    <h4>Síguenos</h4>
+                    <a href="https://www.instagram.com/carlosamasoero4184?igsh=MW0wa3F1am1nM3JsaA==" 
+                    target="_blank" 
+                    rel="noopener noreferrer">
+                        <svg class="instagram-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                        @carlosamasoero4184
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Sección del desarrollador -->
+            <div class="footer-developer">
+                <p class="developer-name">
+                    © 2025 Guadalupe Domínguez - Estudiante de Tecnicatura Universitaria en Desarrollo de Software
+                </p>
+                <div class="contact-links">
+                    <a href="mailto:m.guadidominguez@gmail.com">m.guadidominguez@gmail.com</a>
+                    <span style="color: #6b7280;">|</span>
+                    <a href="https://github.com/guadidominguez0" target="_blank" rel="noopener noreferrer">GitHub</a>
+                </div>
+            </div>
         </div>
     </footer>
 
@@ -441,85 +499,35 @@
             }
         });
 
-        // Carrusel automático
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-        const indicators = document.querySelectorAll('.indicator');
-        const totalSlides = slides.length;
+        // Carrusel del Equipo
+        let currentTeamSlide = 0;
+        const teamSlides = document.querySelectorAll('.team-slide');
+        const teamIndicators = document.querySelectorAll('#teamCarousel .carousel-indicator');
+        const totalTeamSlides = teamSlides.length;
 
-        function updateCarousel() {
-            const container = document.getElementById('carouselContainer');
-            container.style.transform = `translateX(-${currentSlide * 100}%)`;
+        function updateTeamCarousel() {
+            const container = document.getElementById('teamCarouselContainer');
+            container.style.transform = `translateX(-${currentTeamSlide * 100}%)`;
             
-            // Actualizar indicadores
-            indicators.forEach((indicator, index) => {
-                indicator.classList.toggle('active', index === currentSlide);
+            teamIndicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentTeamSlide);
             });
         }
 
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateCarousel();
+        function nextTeamSlide() {
+            currentTeamSlide = (currentTeamSlide + 1) % totalTeamSlides;
+            updateTeamCarousel();
         }
 
-        function goToSlide(slideIndex) {
-            currentSlide = slideIndex;
-            updateCarousel();
+        function prevTeamSlide() {
+            currentTeamSlide = (currentTeamSlide - 1 + totalTeamSlides) % totalTeamSlides;
+            updateTeamCarousel();
         }
 
-        // Cambio automático cada 4 segundos
-        let carouselInterval = setInterval(nextSlide, 1500);
-
-        // Pausar en hover
-        const carousel = document.getElementById('photoCarousel');
-        carousel.addEventListener('mouseenter', () => {
-            clearInterval(carouselInterval);
-        });
-
-        carousel.addEventListener('mouseleave', () => {
-            carouselInterval = setInterval(nextSlide, 1500);
-        });
-
-
-        // Carrusel 1
-        // Carrusel automático
-        let currentSlide1 = 0;
-        const slides1 = document.querySelectorAll('.carousel-slide-1');
-        const indicators1 = document.querySelectorAll('.indicator');
-        const totalSlides1 = slides1.length;
-
-        function updateCarousel1() {
-            const container = document.getElementById('carouselContainer-1');
-            container.style.transform = `translateX(-${currentSlide1 * 100}%)`;
-            
-            // Actualizar indicadores
-            indicators1.forEach((indicator, index) => {
-                indicator.classList.toggle('active', index === currentSlide1);
-            });
+        function goToTeamSlide(slideIndex) {
+            currentTeamSlide = slideIndex;
+            updateTeamCarousel();
         }
-
-        function nextSlide1() {
-            currentSlide1 = (currentSlide1 + 1) % totalSlides1;
-            updateCarousel1();
-        }
-
-        function goToSlide1(slideIndex) {
-            currentSlide1 = slideIndex;
-            updateCarousel1();
-        }
-
-        // Cambio automático cada 1.5 segundos
-        let carouselInterval1 = setInterval(nextSlide1, 1500);
-
-        // Pausar en hover
-        const carousel1 = document.getElementById('photoCarousel-1');
-        carousel1.addEventListener('mouseenter', () => {
-            clearInterval(carouselInterval1);
-        });
-
-        carousel1.addEventListener('mouseleave', () => {
-            carouselInterval1 = setInterval(nextSlide1, 1500);
-        });
     </script>
 </body>
 </html>
